@@ -32,9 +32,9 @@ export function init() {
        * add neighbors
        * example : 0-0 => ["1-0", "0-1"]
        */
-      directions.forEach(([dx, dy]) => {
-        const newRow = row + dx;
-        const newCol = col + dy;
+      directions.forEach(([x, y]) => {
+        const newRow = row + x;
+        const newCol = col + y;
 
         const isValid =
           newRow >= 0 &&
@@ -48,5 +48,4 @@ export function init() {
       });
     }
   }
-  console.log(graph);
 }
