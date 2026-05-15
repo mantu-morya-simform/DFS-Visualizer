@@ -31,7 +31,6 @@ export function calcDFS(
     fillColor(index); //fill color
     // destination found
     if (currentKey === destKey) {
-      // [...set];
       return true;
     }
 

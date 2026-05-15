@@ -109,3 +109,14 @@ body {
   background: #a3d668;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+
+.select__Algo {
+  height: 35px;
+  width: 100px;
+  padding: 5px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background: var(--color-grid-bg);
+  margin-bottom: 10px;
+}

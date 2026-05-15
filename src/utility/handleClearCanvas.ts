@@ -1,4 +1,8 @@
-import { btnClickStatus, visualDelay } from "../constants/gameData";
+import {
+  btnClickStatus,
+  visualDelay,
+  visualizeBtn,
+} from "../constants/gameData";
 import { clearCanvasBtnElement, gridElement } from "../dom/domElement";
 
 export function handleClearCanvas() {
@@ -12,6 +16,7 @@ export function handleClearCanvas() {
     btnClickStatus.destIndex.col = 0;
     visualDelay.pathDelay = 0;
     visualDelay.visitedDelay = 0;
+    visualizeBtn.isEnable = true;
     cells?.forEach((cell) => {
       cell.classList.remove("visited", "path", "src", "dest");
     });
