@@ -9,6 +9,8 @@ export function handleClickSourceDist() {
 
     if (target.tagName !== "P") return;
 
+    if (target.getAttribute("data-is-wall")) return;
+
     if (!btnClickStatus.isSrcBtnEnable) {
       target.classList.add("src");
       btnClickStatus.isSrcBtnEnable = true;
