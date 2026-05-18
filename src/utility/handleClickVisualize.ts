@@ -17,6 +17,7 @@ export function handleClickVisualize() {
   visualizeBtnElement?.addEventListener("click", () => {
     // Stop if visualize button is disabled
     if (!visualizeBtn.isEnable) return;
+    if (!visualizeBtnElement) return;
 
     // Disable visualize button while animation runs
     visualizeBtn.isEnable = false;
