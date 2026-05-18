@@ -1,48 +1,70 @@
 import {
   algo,
   btnClickStatus,
+  clearBtn,
   graph,
+  visualDelay,
   visualizeBtn,
 } from "../constants/gameData";
-import { visualizeBtnElement } from "../dom/domElement";
+
+import { clearCanvasBtnElement, visualizeBtnElement } from "../dom/domElement";
+
 import { calcBFS } from "./calcBFS";
 import { calcDFS } from "./calcDFS";
 
 export function handleClickVisualize() {
+  // Add click event to visualize button
   visualizeBtnElement?.addEventListener("click", () => {
-    if (!visualizeBtn.isEnable) return; // if visualizeBtn not enable not allow to give access of click
+    // Stop if visualize button is disabled
+    if (!visualizeBtn.isEnable) return;
 
-    visualizeBtn.isEnable = false; // if its true then make it false cause we clicked once after clear the canvas then it allow to click
+    // Disable visualize button while animation runs
+    visualizeBtn.isEnable = false;
+    visualizeBtnElement.disabled = !visualizeBtn.isEnable;
 
-    //if src and dest btn are enable then allow to perform action
+    // Disable clear button during visualization
+    clearBtn.isEnable = false;
+    clearCanvasBtnElement!.disabled = !clearBtn.isEnable;
+
+    // Check if source and destination are selected
     if (!btnClickStatus.isSrcBtnEnable || !btnClickStatus.isDestBtnEnable) {
       alert("Please Select Source And Destination First");
-      return;
+
+      // Re-enable visualize button
+      visualizeBtn.isEnable = true;
+      visualizeBtnElement.disabled = !visualizeBtn.isEnable;
+
+      // Re-enable clear button
+      clearBtn.isEnable = true;
+      clearCanvasBtnElement!.disabled = !clearBtn.isEnable;
+
+      return; // stop execution
     }
 
-    // for check path available or not btw src and dest
-    // let isPath: boolean;
+    // Run DFS or BFS based on selected algorithm
+    const pathFound =
+      algo.currentAlgo === "DFS"
+        ? calcDFS(btnClickStatus.srcIndex, btnClickStatus.destIndex, graph)
+        : calcBFS(btnClickStatus.srcIndex, btnClickStatus.destIndex, graph);
 
-    if (algo.currentAlgo === "DFS") {
-      // isPath = calcDFS(
-      //   btnClickStatus.srcIndex,
-      //   btnClickStatus.destIndex,
-      //   graph,
-      // );
-      calcDFS(btnClickStatus.srcIndex, btnClickStatus.destIndex, graph);
-    } else {
-      // isPath = calcBFS(btnClickStatus.srcIndex, btnClickStatus.destIndex, graph);
-      calcBFS(btnClickStatus.srcIndex, btnClickStatus.destIndex, graph);
+    // get total animation delay
+    const finishDelay = visualDelay.pathDelay;
+
+    // show alert if no path exists
+    if (!pathFound) {
+      setTimeout(() => {
+        alert("There is not any path Present to reach to dest");
+      }, finishDelay);
     }
 
-    /**
-     * @description not work properly
-     */
-
-    // if (!isPath) {
-    //   setTimeout(() => {
-    //     alert("There is not any path Present to reach to dest");
-    //   }, 3000);
-    // }
+    // enable clear button after animation ends
+    setTimeout(() => {
+      clearBtn.isEnable = true;
+      clearCanvasBtnElement!.disabled = !clearBtn.isEnable;
+    }, finishDelay);
   });
+
+  // set initial clear button state
+  if (clearCanvasBtnElement)
+    clearCanvasBtnElement.disabled = !clearBtn.isEnable;
 }

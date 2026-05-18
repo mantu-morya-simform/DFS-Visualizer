@@ -31,3 +31,7 @@ export const algo: algoType = {
 export const visualizeBtn = {
   isEnable: true,
 };
+
+export const clearBtn = {
+  isEnable: true,
+};
