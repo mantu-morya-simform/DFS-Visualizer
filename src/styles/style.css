@@ -24,12 +24,17 @@ body {
   width: 100vw;
   gap: 0;
   padding: 20px;
+  border: 1px solid var(--color-dark-border);
+  background: var(--color-dark-grid);
+}
+
+.path {
+  background: var(--color-node-processing) !important;
 }
 
 .cell {
-  border: 1px solid #c4d7f0 !important;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: var(--color-grid-bg);
 }
 
 .cell:hover {
@@ -46,7 +51,16 @@ body {
   background: var(--color-node-end) !important;
 }
 
-.visualize__btn {
+.click__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.visualize__btn,
+.clear__canvas__btn {
   width: 80px;
   height: 40px;
   border: none;
@@ -56,6 +70,7 @@ body {
   cursor: pointer;
 }
 
-.visited {
-  background: var(--color-node-visited);
+.clear__canvas__btn {
+  width: 100px;
+  background: #c0eb75;
 }

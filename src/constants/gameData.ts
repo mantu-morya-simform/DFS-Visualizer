@@ -1,12 +1,35 @@
 export const GRID_SIZE = 50;
-interface graphType {
+export let visualDelay = {
+  visitedDelay: 0,
+  pathDelay: 0,
+};
+export interface graphType {
   [key: string]: string[];
 }
 
+export type btnType = {
+  isSrcBtnEnable: boolean;
+  isDestBtnEnable: boolean;
+  srcIndex: {
+    row: number;
+    col: number;
+  };
+  destIndex: {
+    row: number;
+    col: number;
+  };
+};
+
 export const graph: graphType = {};
-export const btnClickStatus = {
+export const btnClickStatus: btnType = {
   isSrcBtnEnable: false,
   isDestBtnEnable: false,
-  srcIndex: 0,
-  destIndex: 0,
+  srcIndex: {
+    row: 0,
+    col: 0,
+  },
+  destIndex: {
+    row: 0,
+    col: 0,
+  },
 };

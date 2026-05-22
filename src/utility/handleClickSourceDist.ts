@@ -1,4 +1,4 @@
-import { btnClickStatus, GRID_SIZE } from "../constants/gameData";
+import { btnClickStatus } from "../constants/gameData";
 import { gridElement } from "../dom/domElement";
 
 export function handleClickSourceDist() {
@@ -14,8 +14,8 @@ export function handleClickSourceDist() {
       btnClickStatus.isSrcBtnEnable = true;
       let row = Number(target.getAttribute("data-row"));
       let col = Number(target.getAttribute("data-col"));
-      let index = row * GRID_SIZE + col;
-      btnClickStatus.srcIndex = index;
+      btnClickStatus.srcIndex.row = row;
+      btnClickStatus.srcIndex.col = col;
       return;
     }
     if (!btnClickStatus.isDestBtnEnable) {
@@ -23,8 +23,8 @@ export function handleClickSourceDist() {
       btnClickStatus.isDestBtnEnable = true;
       let row = Number(target.getAttribute("data-row"));
       let col = Number(target.getAttribute("data-col"));
-      let index = row * GRID_SIZE + col;
-      btnClickStatus.destIndex = index;
+      btnClickStatus.destIndex.row = row;
+      btnClickStatus.destIndex.col = col;
       return;
     }
   });
