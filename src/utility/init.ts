@@ -1,9 +1,9 @@
-import { graph, GRID_SIZE } from "../constants/gameData";
+import { graph, gridSize, wallCount } from "../constants/gameData";
 import { gridElement } from "../dom/domElement";
 
 export function init() {
-  for (let row = 0; row < GRID_SIZE; row++) {
-    for (let col = 0; col < GRID_SIZE; col++) {
+  for (let row = 0; row < gridSize; row++) {
+    for (let col = 0; col < gridSize; col++) {
       let cell = document.createElement("p");
       cell?.classList.add("cell");
       /**
@@ -37,15 +37,25 @@ export function init() {
         const newCol = col + y;
 
         const isValid =
-          newRow >= 0 &&
-          newRow < GRID_SIZE &&
-          newCol >= 0 &&
-          newCol < GRID_SIZE;
+          newRow >= 0 && newRow < gridSize && newCol >= 0 && newCol < gridSize;
 
         if (isValid) {
           graph[node].push(`${newRow}-${newCol}`);
         }
       });
+    }
+  }
+
+  for (let i = 0; i < wallCount; i++) {
+    const randomIdx = Math.floor(Math.random() * gridSize * gridSize);
+
+    const cell = gridElement?.children[randomIdx];
+
+    if (!(cell instanceof HTMLElement)) return;
+
+    if (!cell.classList.contains("wall")) {
+      cell.classList.add("wall");
+      cell.dataset.isWall = "true";
     }
   }
 }

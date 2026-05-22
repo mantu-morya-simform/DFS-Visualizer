@@ -1,26 +1,15 @@
-export const GRID_SIZE = 50;
+import type { btnType } from "../type/btmType";
+import type { graphType } from "../type/graphType";
+
+export const gridSize = 50;
+export const wallCount = gridSize * gridSize * 0.2;
 export let visualDelay = {
   visitedDelay: 0,
   pathDelay: 0,
 };
-export interface graphType {
-  [key: string]: string[];
-}
-
-export type btnType = {
-  isSrcBtnEnable: boolean;
-  isDestBtnEnable: boolean;
-  srcIndex: {
-    row: number;
-    col: number;
-  };
-  destIndex: {
-    row: number;
-    col: number;
-  };
-};
 
 export const graph: graphType = {};
+
 export const btnClickStatus: btnType = {
   isSrcBtnEnable: false,
   isDestBtnEnable: false,

@@ -1,10 +1,7 @@
-import {
-  GRID_SIZE,
-  visualDelay,
-  type btnType,
-  type graphType,
-} from "../constants/gameData";
+import { gridSize, visualDelay } from "../constants/gameData";
 import { gridElement } from "../dom/domElement";
+import type { btnType } from "../type/btmType";
+import type { graphType } from "../type/graphType";
 
 export function calcDFS(
   srcIndex: btnType["srcIndex"],
@@ -13,27 +10,35 @@ export function calcDFS(
 ) {
   const visited = new Set<string>();
 
+  //extract destKey
   const destKey = `${destIndex.row}-${destIndex.col}`;
 
   function dfs(row: number, col: number): boolean {
+    //extract currKey
     const currentKey = `${row}-${col}`;
 
     // already visited
     if (visited.has(currentKey)) return false;
 
+    //add currenct key In visited List
     visited.add(currentKey);
 
-    fillColor(row * GRID_SIZE + col);
+    let index = row * gridSize + col; //find the index of the currenct key from row and col
+    const cell = gridElement?.children[index]; // find the index element from the gridElement
+    let isWall = Boolean(cell?.getAttribute("data-is-wall")); // match with his attribute if it is wall or not
+    if (isWall) return false; // if current element is wall then return
 
+    fillColor(index); //fill color
     // destination found
     if (currentKey === destKey) {
+      // [...set];
       return true;
     }
 
-    const neighbors = graph[currentKey] || [];
+    const neighbors = graph[currentKey] || []; //find neighbors
 
     for (const neighbor of neighbors) {
-      const [nextRow, nextCol] = neighbor.split("-").map(Number);
+      const [nextRow, nextCol] = neighbor.split("-").map(Number); //split the string and convert as Number
 
       if (dfs(nextRow, nextCol)) {
         return true;

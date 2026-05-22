@@ -1,4 +1,4 @@
-import { btnClickStatus, graph, type btnType } from "../constants/gameData";
+import { btnClickStatus, graph } from "../constants/gameData";
 import { visualizeBtnElement } from "../dom/domElement";
 import { calcDFS } from "./calcDFS";
 
@@ -8,13 +8,16 @@ export function handleClickVisualize() {
       alert("Please Select Source And Destination First");
       return;
     }
-    fillColor(btnClickStatus.srcIndex, btnClickStatus.destIndex);
-  });
-}
+    let path = calcDFS(
+      btnClickStatus.srcIndex,
+      btnClickStatus.destIndex,
+      graph,
+    );
 
-function fillColor(
-  srcIndex: btnType["srcIndex"],
-  destIndex: btnType["destIndex"],
-) {
-  calcDFS(srcIndex, destIndex, graph);
+    if (!path) {
+      setTimeout(() => {
+        alert("There is not any path Present to reach to dest");
+      }, 3000);
+    }
+  });
 }
