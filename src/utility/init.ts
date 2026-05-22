@@ -46,6 +46,7 @@ export function init() {
     }
   }
 
+  //create wall and append into grid
   for (let i = 0; i < wallCount; i++) {
     const randomIdx = Math.floor(Math.random() * gridSize * gridSize);
 

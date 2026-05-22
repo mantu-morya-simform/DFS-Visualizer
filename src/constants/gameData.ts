@@ -1,3 +1,4 @@
+import type { algoType } from "../type/algoType";
 import type { btnType } from "../type/btmType";
 import type { graphType } from "../type/graphType";
 
@@ -21,4 +22,16 @@ export const btnClickStatus: btnType = {
     row: 0,
     col: 0,
   },
+};
+
+export const algo: algoType = {
+  currentAlgo: "DFS",
+};
+
+export const visualizeBtn = {
+  isEnable: true,
+};
+
+export const clearBtn = {
+  isEnable: true,
 };

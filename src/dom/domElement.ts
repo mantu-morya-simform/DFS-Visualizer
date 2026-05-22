@@ -4,4 +4,10 @@ const visualizeBtnElement =
 const clearCanvasBtnElement = document.querySelector<HTMLButtonElement>(
   ".clear__canvas__btn",
 );
-export { gridElement, visualizeBtnElement, clearCanvasBtnElement };
+const selectedAlgo = document.querySelector<HTMLSelectElement>(".select__Algo");
+export {
+  gridElement,
+  visualizeBtnElement,
+  clearCanvasBtnElement,
+  selectedAlgo,
+};

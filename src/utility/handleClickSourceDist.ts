@@ -1,6 +1,7 @@
 import { btnClickStatus } from "../constants/gameData";
 import { gridElement } from "../dom/domElement";
 
+//select source and dest initially
 export function handleClickSourceDist() {
   gridElement?.addEventListener("click", (e: MouseEvent) => {
     const target = e.target;
@@ -11,6 +12,7 @@ export function handleClickSourceDist() {
 
     if (target.getAttribute("data-is-wall")) return;
 
+    //if src not selected selected select it
     if (!btnClickStatus.isSrcBtnEnable) {
       target.classList.add("src");
       btnClickStatus.isSrcBtnEnable = true;
@@ -20,6 +22,7 @@ export function handleClickSourceDist() {
       btnClickStatus.srcIndex.col = col;
       return;
     }
+    //if dest not selected selected select it
     if (!btnClickStatus.isDestBtnEnable) {
       target.classList.add("dest");
       btnClickStatus.isDestBtnEnable = true;
