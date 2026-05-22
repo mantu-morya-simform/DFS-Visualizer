@@ -1,0 +1,61 @@
+@import url("./token.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(50, 1fr);
+  grid-template-rows: repeat(50, 1fr);
+  height: 100vh;
+  width: 100vw;
+  gap: 0;
+  padding: 20px;
+}
+
+.cell {
+  border: 1px solid #c4d7f0 !important;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.cell:hover {
+  background: var(--color-grid-highlight);
+}
+
+.src,
+.src:hover {
+  background: var(--color-node-start) !important;
+}
+
+.dest,
+.dest:hover {
+  background: var(--color-node-end) !important;
+}
+
+.visualize__btn {
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  align-self: center;
+  background: var(--color-node-path);
+  cursor: pointer;
+}
+
+.visited {
+  background: var(--color-node-visited);
+}

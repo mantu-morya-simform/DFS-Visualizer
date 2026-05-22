@@ -1,0 +1,220 @@
+:root {
+  /* =========================================
+     🎨 DFS / BFS VISUALIZER DESIGN TOKENS
+     ========================================= */
+
+  /* =======================
+     🌈 GRAPH NODE COLORS
+    ======================= */
+  --color-node-default: #dbeafe;
+  --color-node-border: #60a5fa;
+
+  --color-node-start: #22c55e;
+  --color-node-end: #ef4444;
+
+  --color-node-visited: #8b5cf6;
+  --color-node-processing: #f59e0b;
+  --color-node-path: #14b8a6;
+
+  --color-node-wall: #1e293b;
+  --color-node-weight: #f97316;
+
+  --color-node-hover: #bfdbfe;
+  --color-node-active: #3b82f6;
+
+  /* =======================
+     🌐 GRID COLORS
+    ======================= */
+  --color-grid-bg: #f8fafc;
+  --color-grid-line: #cbd5e1;
+  --color-grid-highlight: #93c5fd;
+
+  /* =======================
+     🧠 ALGORITHM COLORS
+    ======================= */
+  --color-bfs: #2563eb;
+  --color-dfs: #7c3aed;
+  --color-dijkstra: #f59e0b;
+  --color-a-star: #10b981;
+
+  /* =======================
+     🎞 ANIMATION COLORS
+    ======================= */
+  --color-animate-visit: rgba(139, 92, 246, 0.2);
+  --color-animate-path: rgba(20, 184, 166, 0.2);
+
+  /* =======================
+     🧾 PANEL / UI COLORS
+    ======================= */
+  --color-panel-bg: #ffffff;
+  --color-panel-border: #e2e8f0;
+  --color-panel-hover: #f1f5f9;
+
+  --color-sidebar-bg: #0f172a;
+  --color-sidebar-text: #f8fafc;
+
+  --color-toolbar-bg: #ffffff;
+  --color-toolbar-border: #cbd5e1;
+
+  /* =======================
+     🎯 BUTTON COLORS
+    ======================= */
+  --color-btn-run: #22c55e;
+  --color-btn-run-hover: #16a34a;
+
+  --color-btn-reset: #ef4444;
+  --color-btn-reset-hover: #dc2626;
+
+  --color-btn-clear: #f59e0b;
+  --color-btn-clear-hover: #d97706;
+
+  --color-btn-generate: #3b82f6;
+  --color-btn-generate-hover: #2563eb;
+
+  /* =======================
+     📊 STATUS COLORS
+    ======================= */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #0ea5e9;
+
+  /* =======================
+     🌑 DARK MODE COLORS
+    ======================= */
+  --color-dark-bg: #020617;
+  --color-dark-card: #111827;
+  --color-dark-border: #334155;
+
+  --color-dark-node: #1e293b;
+  --color-dark-grid: #0f172a;
+
+  /* =======================
+     🔠 TYPOGRAPHY
+    ======================= */
+  --font-family-base: "Poppins", sans-serif;
+  --font-family-mono: "Fira Code", monospace;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-base: 1.5;
+
+  /* =======================
+     📏 SPACING
+    ======================= */
+  --space-xxs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* =======================
+     📦 NODE SIZES
+    ======================= */
+  --node-size-xs: 20px;
+  --node-size-sm: 28px;
+  --node-size-md: 36px;
+  --node-size-lg: 48px;
+
+  --grid-gap: 2px;
+
+  /* =======================
+     🔲 BORDER RADIUS
+    ======================= */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-round: 50%;
+
+  /* =======================
+     🌫 SHADOWS
+    ======================= */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+  --shadow-node-hover: 0 0 12px rgba(59, 130, 246, 0.4);
+  --shadow-node-visited: 0 0 10px rgba(139, 92, 246, 0.5);
+
+  /* =======================
+     ⚡ TRANSITIONS
+    ======================= */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* =======================
+     🎞 ANIMATIONS
+    ======================= */
+  --animation-visit-duration: 0.4s;
+  --animation-path-duration: 0.6s;
+  --animation-node-pop: scale(1.1);
+
+  /* =======================
+     📐 LAYOUT
+    ======================= */
+  --sidebar-width: 280px;
+  --toolbar-height: 64px;
+
+  --container-width: 1440px;
+  --grid-max-width: 900px;
+
+  /* =======================
+     📊 Z-INDEX
+    ======================= */
+  --z-sidebar: 100;
+  --z-toolbar: 200;
+  --z-modal: 500;
+  --z-tooltip: 1000;
+}
+
+/* ================================
+   🎨 CELL STATES
+================================= */
+
+.cell {
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cell.src {
+  background-color: var(--color-node-start);
+  border-color: var(--color-node-start);
+}
+
+.cell.dest {
+  background-color: var(--color-node-end);
+  border-color: var(--color-node-end);
+}
+
+.cell.visited {
+  background-color: var(--color-node-visited);
+  border-color: var(--color-node-visited);
+}
+
+.cell.path {
+  background-color: var(--color-node-path);
+  border-color: var(--color-node-path);
+  font-weight: bold;
+}
+
+.cell:hover {
+  background-color: var(--color-node-hover);
+  cursor: pointer;
+}
